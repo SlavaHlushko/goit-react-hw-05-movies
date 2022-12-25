@@ -12,8 +12,8 @@ axios.defaults.params = {
   language: lang,
 };
 
-export function getTrending() {
-  return axios.get(`trending/movie/day`).then(r => r.data.results);
+export function getTrending(period) {
+  return axios.get(`trending/movie/${period}`).then(r => r.data.results);
 }
 
 export function getByQuery(query) {
