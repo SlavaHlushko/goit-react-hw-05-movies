@@ -1,6 +1,6 @@
 import SearchForm from '../../components/SearchForm/SearchForm';
 import { useState, useEffect } from 'react';
-import { FilmList } from '../../components/FilmList/FilmList';
+import FilmList from '../../components/FilmList/FilmList';
 import { getByQuery } from '../../services/movieAPI';
 import { useSearchParams } from 'react-router-dom';
 import { MagnifyingGlass } from 'react-loader-spinner';

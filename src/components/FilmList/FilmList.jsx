@@ -2,7 +2,7 @@ import { FilmItem } from '../FilmItem/FilmItem';
 import PropTypes from 'prop-types';
 import { List, Item } from './FilmList.styled';
 
-export const FilmList = ({ films }) => {
+const FilmList = ({ films }) => {
   <List>
     {films.map(({ id, original_title }) => {
       return (
@@ -17,3 +17,5 @@ export const FilmList = ({ films }) => {
 FilmList.propTypes = {
   films: PropTypes.array.isRequired,
 };
+
+export default FilmList;
