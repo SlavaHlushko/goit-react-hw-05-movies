@@ -1,5 +1,6 @@
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { Link } from './FilmItem.styled';
 
 export const FilmItem = ({ filmId, name }) => {
   const location = useLocation();

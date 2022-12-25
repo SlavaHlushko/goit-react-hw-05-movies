@@ -2,7 +2,7 @@ import { FilmItem } from 'components/FilmItem/FilmItem';
 import PropTypes from 'prop-types';
 import { List, Item } from './FilmList.styled';
 
-const FilmList = ({ films }) => {
+export const FilmList = ({ films }) => {
   <List>
     {films.map(({ id, original_title }) => {
       return (

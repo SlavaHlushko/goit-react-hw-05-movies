@@ -15,3 +15,19 @@ axios.defaults.params = {
 export function getTrending() {
   return axios.get(`trending/movie/day`).then(r => r.data.results);
 }
+
+export function getByQuery(query) {
+  return axios.get(`search/movie?query=${query}`).then(r => r.data.results);
+}
+
+export function getMovieDetails(movieId) {
+  return axios.get(`movie/${movieId}/reviews`).then(r => r.data);
+}
+
+export function getMovieCredits(movieId) {
+  return axios.get(`movie/${movieId}/credits/reviews`).then(r => r.data);
+}
+
+export function getMovieReviews(movieId) {
+  return axios.get(`movie/${movieId}/reviews`).then(r => r.data.results);
+}
