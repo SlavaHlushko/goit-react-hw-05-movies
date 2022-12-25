@@ -1,13 +1,13 @@
-import { SearchForm } from '../../components/SearchForm/SearchForm';
+import SearchForm from '../../components/SearchForm/SearchForm';
 import { useState, useEffect } from 'react';
-import { FilmList } from '../../components/FilmList/FilmList';
+import FilmList from '../../components/FilmList/FilmList';
 import { getByQuery } from '../../services/movieAPI';
 import { useSearchParams } from 'react-router-dom';
 import { MagnifyingGlass } from 'react-loader-spinner';
 import { Box } from '../../components/Box.styled';
 import { QueryMessage } from './Movies.styled';
 
-export const Movies = () => {
+const Movies = () => {
   const [searchParams, setSerachParams] = useSearchParams();
   const [films, setFilms] = useState([]);
   const [query, setQuery] = useState('');
@@ -39,9 +39,9 @@ export const Movies = () => {
       });
   }, [query]);
 
-  const handleSearch = serachQuery => {
-    setSerachParams({ query: serachQuery });
-    setQuery(serachQuery);
+  const handleSearch = searchQuery => {
+    setSerachParams({ query: searchQuery });
+    setQuery(searchQuery);
   };
 
   return (
@@ -56,3 +56,5 @@ export const Movies = () => {
     </Box>
   );
 };
+
+export default Movies;

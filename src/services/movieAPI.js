@@ -8,7 +8,7 @@ export const IMG_URL = 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/';
 
 axios.defaults.baseURL = BASE_URL;
 axios.defaults.params = {
-  key: API_KEY,
+  api_key: API_KEY,
   language: lang,
 };
 

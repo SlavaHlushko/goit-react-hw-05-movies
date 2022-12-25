@@ -4,7 +4,7 @@ import { getMovieDetails, IMG_URL } from '../../services/movieAPI';
 import { Box } from '../../components/Box.styled';
 import { StyledLink } from '../MovieDetails/MovieDetails';
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
   const location = useLocation();
   const { movieId } = useParams();
   const [posterPath, setPosterPath] = useState('');
@@ -71,3 +71,5 @@ export const MovieDetails = () => {
     </Box>
   );
 };
+
+export default MovieDetails;

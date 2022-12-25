@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
-import { getTrending } from 'services/movieAPI';
+import { getTrending } from '../../services/movieAPI';
 import { Box } from '../../components/Box.styled';
-import { FilmList } from '../../components/FilmList/FilmList';
+import FilmList from '../../components/FilmList/FilmList';
 import { Title } from './Home.styled';
 
-export const Home = () => {
+const Home = () => {
   const [trending, setTrending] = useState([]);
 
   useEffect(() => {
@@ -12,6 +12,7 @@ export const Home = () => {
       setTrending(data);
     });
   }, []);
+
   return (
     <Box pl="20px">
       <Title>Trending today</Title>
@@ -19,3 +20,5 @@ export const Home = () => {
     </Box>
   );
 };
+
+export default Home;

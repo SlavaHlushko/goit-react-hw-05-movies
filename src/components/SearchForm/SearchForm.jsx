@@ -2,7 +2,7 @@ import { Formik } from 'formik';
 import PropTypes from 'prop-types';
 import { StyledForm, StyledField } from './SearchForm.styled';
 
-export const SearchForm = ({ onSearch }) => {
+const SearchForm = ({ onSearch }) => {
   return (
     <Formik
       initialValues={{
@@ -17,7 +17,7 @@ export const SearchForm = ({ onSearch }) => {
         <label>
           <StyledField type="text" name="query"></StyledField>
         </label>
-        <button type="submit"></button>
+        <button type="submit">Search</button>
       </StyledForm>
     </Formik>
   );
@@ -26,3 +26,5 @@ export const SearchForm = ({ onSearch }) => {
 SearchForm.propTypes = {
   onSearch: PropTypes.func.isRequired,
 };
+
+export default SearchForm;
