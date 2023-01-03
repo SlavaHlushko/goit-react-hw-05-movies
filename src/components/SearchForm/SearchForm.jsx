@@ -1,30 +1,25 @@
-import { Formik } from 'formik';
+import { Formik, Field, Form } from 'formik';
 import PropTypes from 'prop-types';
-import { StyledForm, StyledField } from './SearchForm.styled';
-
-const SearchForm = ({ onSearch }) => {
+const SearchForm = ({ onSubmit }) => {
   return (
     <Formik
       initialValues={{
         query: '',
       }}
       onSubmit={({ query }, { resetForm }) => {
-        onSearch(query);
+        onSubmit(query);
         resetForm();
       }}
     >
-      <StyledForm>
-        <label>
-          <StyledField type="text" name="query"></StyledField>
-        </label>
+      <Form>
+        <Field type="text" name="query" />
         <button type="submit">Search</button>
-      </StyledForm>
+      </Form>
     </Formik>
   );
 };
 
-SearchForm.propTypes = {
-  onSearch: PropTypes.func.isRequired,
-};
-
 export default SearchForm;
+SearchForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};

@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { getMovieReviews } from '../../services/movieAPI';
 import { ReviewsList } from './Review.styled';
 
-export const Reviews = () => {
+const Reviews = () => {
   const { movieId } = useParams();
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
@@ -12,7 +12,7 @@ export const Reviews = () => {
     });
   }, [movieId]);
   if (reviews.length === 0) {
-    return <p>We don't have any reviews for yhis movie</p>;
+    return <p>We don't have any reviews for his movie</p>;
   }
   return (
     <ReviewsList>
@@ -30,3 +30,5 @@ export const Reviews = () => {
     </ReviewsList>
   );
 };
+
+export default Reviews;

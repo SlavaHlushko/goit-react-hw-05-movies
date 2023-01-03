@@ -1,59 +1,50 @@
-import SearchForm from '../../components/SearchForm/SearchForm';
-import { useState, useEffect } from 'react';
-import FilmList from '../../components/FilmList/FilmList';
 import { getByQuery } from '../../services/movieAPI';
 import { useSearchParams } from 'react-router-dom';
-import { MagnifyingGlass } from 'react-loader-spinner';
-import { Box } from '../../components/Box.styled';
-import { QueryMessage } from './Movies.styled';
+import { useState, useEffect } from 'react';
+import { FilmList } from '../../components/FilmList/FilmList';
+import SearchForm from '../../components/SearchForm/SearchForm';
 
 const Movies = () => {
-  const [searchParams, setSerachParams] = useSearchParams();
-  const [films, setFilms] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
   const [query, setQuery] = useState('');
-  const [status, setStatus] = useState('idle');
-  const urlQuery = searchParams.get('query');
+  const [movies, setMovies] = useState([]);
+  const queryInput = searchParams.get('query');
 
   useEffect(() => {
-    if (urlQuery) {
-      setQuery(urlQuery);
+    if (queryInput) {
+      setQuery(queryInput);
       return;
     }
     setQuery('');
-  }, [urlQuery]);
+  }, [queryInput]);
 
   useEffect(() => {
     if (query === '') {
-      setStatus('idle');
-      setFilms([]);
+      setMovies([]);
       return;
     }
-    setStatus('pending');
     getByQuery(query)
       .then(data => {
-        setFilms(data);
+        setMovies(data);
       })
-      .catch(error => console.log(error))
-      .finally(() => {
-        setStatus('done');
-      });
+      .catch(error => console.log(error));
   }, [query]);
 
-  const handleSearch = searchQuery => {
-    setSerachParams({ query: searchQuery });
+  const handleSubmit = searchQuery => {
+    setSearchParams({ query: searchQuery });
     setQuery(searchQuery);
   };
 
   return (
-    <Box pl="20px">
-      <SearchForm onSearch={handleSearch} />
-      {films.length === 0 && status === 'done' ? (
-        <QueryMessage>There are no movies found for your query</QueryMessage>
+    <main>
+      <h2>Movies search page</h2>
+      <SearchForm onSubmit={handleSubmit} />
+      {movies.length === 0 && queryInput ? (
+        <p>Sorry, there is no any movie</p>
       ) : (
-        <FilmList films={films} />
+        <FilmList movies={movies} />
       )}
-      {status === 'pending' && <MagnifyingGlass />}
-    </Box>
+    </main>
   );
 };
 

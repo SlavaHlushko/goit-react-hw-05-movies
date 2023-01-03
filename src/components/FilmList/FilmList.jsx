@@ -1,21 +1,22 @@
-import { FilmItem } from '../FilmItem/FilmItem';
-import PropTypes from 'prop-types';
+import { Link, useLocation } from 'react-router-dom';
 import { List, Item } from './FilmList.styled';
+import PropTypes from 'prop-types';
 
-const FilmList = ({ films }) => {
-  <List>
-    {films.map(({ id, original_title }) => {
-      return (
+export const FilmList = ({ movies }) => {
+  const location = useLocation();
+  return (
+    <List>
+      {movies.map(({ id, title }) => (
         <Item key={id}>
-          <FilmItem filmId={id} name={original_title} />
+          <Link to={`/movies/${id}`} state={{ from: location }}>
+            {title}
+          </Link>
         </Item>
-      );
-    })}
-  </List>;
+      ))}
+    </List>
+  );
 };
 
 FilmList.propTypes = {
-  films: PropTypes.array.isRequired,
+  movies: PropTypes.array.isRequired,
 };
-
-export default FilmList;
